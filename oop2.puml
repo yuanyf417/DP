@@ -1,0 +1,143 @@
+@startuml
+class DonaldDuck {
+}
+note top of DonaldDuck
+ * 唐老鸭
+end note
+
+class Water {
+}
+note top of Water
+ * 水
+end note
+
+class Duck {
+}
+note top of Duck
+ * 鸭子
+end note
+
+class WideGoose {
++ void fly()
+}
+note top of WideGoose
+ * 大雁
+end note
+note left of WideGoose::fly()
+ * 飞翔
+end note
+
+interface ILanguage {
+~ void speak()
+}
+note top of ILanguage
+ * 讲人话
+end note
+
+class WideGooseAggregate {
+- WideGoose[] wideGooses
++ void vFlight()
++ void oneLineFlight()
+}
+note top of WideGooseAggregate
+ * 雁群
+end note
+note left of WideGooseAggregate::wideGooses
+ * 大雁数组组成雁群
+end note
+note left of WideGooseAggregate::vFlight()
+ * V字飞行
+end note
+note left of WideGooseAggregate::oneLineFlight()
+ * 一字飞行
+end note
+
+interface IFly {
+~ void fly()
+}
+note top of IFly
+ * 飞翔
+end note
+
+abstract class Animal {
+# boolean life
++ void Metabolism(Oxygen,Water)
++ {abstract}void reproduction()
+}
+note top of Animal
+ * 动物
+end note
+note left of Animal::life
+ * 生命
+end note
+note left of Animal::Metabolism(Oxygen,Water)
+ * 新陈代谢(氧气,水)
+end note
+note left of Animal::reproduction()
+ * 繁殖
+end note
+
+class Penguin {
+- Climate climate
+}
+note top of Penguin
+ * 企鹅
+end note
+note left of Penguin::climate
+ * 气候
+end note
+
+abstract class Bird {
+- String plumage
+- String hornyBeak
+- Wing wing
++ <<Create>> Bird()
++ void reproduction()
+}
+note top of Bird
+ * 鸟
+end note
+
+note left of Bird::plumage
+ * 羽毛
+end note
+note left of Bird::hornyBeak
+ * 角质喙
+end note
+note left of Bird::wing
+ * 翅膀
+end note
+note left of Bird::reproduction()
+ * 下蛋[繁殖]
+end note
+
+class Wing {
+}
+note top of Wing
+ * 翅膀
+end note
+class Climate {
+}
+note top of Climate
+ * 气候
+end note
+
+class Oxygen {
+}
+note top of Oxygen
+ * 氧气
+end note
+
+Animal <|---- Bird :继承
+Bird <|-- Penguin :继承
+Bird <|-- WideGoose :继承
+Bird <|--- Duck :继承
+Bird "1"*---"2" Wing :合成（组合）
+Duck <|-- DonaldDuck :继承
+DonaldDuck <|. ILanguage : 实现
+WideGooseAggregate o-- WideGoose : 聚合
+Water <... Animal : 依赖
+Oxygen <... Animal : 依赖
+IFly <|.. WideGoose : 实现
+Climate <-- Penguin :关联
+@enduml
