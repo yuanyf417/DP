@@ -1,0 +1,90 @@
+@startuml
+class ConcreteComponent {
++ void operation()
+}
+note top of ConcreteComponent
+
+ * 具体的对象
+ * 也可以给这个对象添加职责
+ * @author YYF.
+ * date 2023/3/8 22:59.
+ 
+end note
+
+class ConcreteDecoratorA {
+- String addedState
++ void operation()
+}
+note top of ConcreteDecoratorA
+
+ * 具体装饰对象A
+ * @author YYF.
+ * date 2023/3/8 23:04.
+ 
+end note
+
+abstract class Decorator {
+# Component component
++ void setComponent(Component)
++ void operation()
+}
+note top of Decorator
+
+ * 装饰抽象类
+ * 对应Component无需知道本类的存在
+ * @author YYF.
+ * date 2023/3/8 23:01.
+ 
+end note
+note left of Decorator::operation()
+
+     * 重写 实际调用Component的operation
+     
+end note
+
+abstract class Component {
++ {abstract}void operation()
+}
+note top of Component
+
+ * 对象接口
+ * 可以动态的添加职责
+ * @author YYF.
+ * date 2023/3/8 22:58.
+ 
+end note
+
+class ConcreteDecoratorB {
++ void operation()
+- void addedBehavior()
+}
+note top of ConcreteDecoratorB
+
+ * 具体装饰对象B
+ * @author YYF.
+ * date 2023/3/8 23:04.
+ 
+end note
+note left of ConcreteDecoratorB::addedBehavior()
+
+     * 具体装饰对象B的独有函数
+     
+end note
+
+class App {
++ {static} void main(String[])
+}
+note top of App
+
+ * @author YYF.
+ * date 2023/3/8 23:13.
+ 
+end note
+
+
+
+Component <|-- ConcreteComponent
+Decorator <|-- ConcreteDecoratorA
+Component <|-- Decorator
+Decorator <|-- ConcreteDecoratorB
+@enduml

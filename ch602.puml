@@ -1,0 +1,99 @@
+@startuml
+class App {
++ {static} void main(String[])
+}
+note top of App
+
+ * @author YYF.
+ * date 2023/3/9 00:42.
+ 
+end note
+
+class CashNormal {
++ double acceptCash(double,int)
+}
+note top of CashNormal
+
+ * @author YYF.
+ * date 2023/3/9 00:26.
+ 
+end note
+
+interface ISale {
+~ double acceptCash(double,int)
+}
+note top of ISale
+
+ * 销售接口
+ * @author YYF.
+ * date 2023/3/9 00:25.
+ 
+end note
+
+class CashSuper {
+- ISale sale
++ void doCorate(ISale)
++ double acceptCash(double,int)
+}
+note top of CashSuper
+
+ * @author YYF.
+ * date 2023/3/9 00:28.
+ 
+end note
+
+class CashContext {
+- ISale sale
++ <<Create>> CashContext(int)
++ double getResult(double,int)
+}
+note top of CashContext
+
+ * @author YYF.
+ * date 2023/3/9 00:42.
+ 
+end note
+
+class CashReturn {
+- double moneyCondition
+- double moneyReturn
++ <<Create>> CashReturn(double,double)
++ double acceptCash(double,int)
+}
+note top of CashReturn
+
+ * @author YYF.
+ * date 2023/3/9 00:29.
+ 
+end note
+note left of CashReturn::moneyCondition
+
+     * 满多少
+     
+end note
+note right of CashReturn::moneyReturn
+
+     * 减多少
+     
+end note
+
+class CashRebate {
+- double moneyRebae
++ <<Create>> CashRebate(double)
++ double acceptCash(double,int)
+}
+note top of CashRebate
+
+ * @author YYF.
+ * date 2023/3/9 00:39.
+ 
+end note
+
+
+
+ISale <|.. CashNormal
+ISale <|.. CashSuper
+CashSuper <|-- CashReturn
+CashSuper <|-- CashRebate
+CashContext o-- CashSuper
+@enduml

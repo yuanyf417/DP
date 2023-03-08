@@ -1,0 +1,79 @@
+@startuml
+interface FuGemen {
+~ void showPower()
+}
+note top of FuGemen
+
+ * 富哥们
+ * @author YYF.
+ * date 2023/3/8 23:30.
+ 
+end note
+note left of FuGemen::showPower()
+
+     * 展示财力
+     
+end note
+
+class App {
++ {static} void main(String[])
+}
+note top of App
+
+ * @author YYF.
+ * date 2023/3/8 23:40.
+ 
+end note
+
+class FuDecorator {
+# FuGemen fuGemen
++ void showPower()
++ void doFuGemen(FuGemen)
+}
+note top of FuDecorator
+
+ * @author YYF.
+ * date 2023/3/8 23:33.
+ 
+end note
+
+class TeslaFuDecorator {
++ void showPower()
+}
+note top of TeslaFuDecorator
+
+ * @author YYF.
+ * date 2023/3/8 23:36.
+ 
+end note
+
+class RockFuDecorator {
++ void showPower()
+}
+note top of RockFuDecorator
+
+ * @author YYF.
+ * date 2023/3/8 23:36.
+ 
+end note
+
+class Mask {
+- String name
++ <<Create>> Mask(String)
++ void showPower()
+}
+note top of Mask
+
+ * 马斯克
+ * @author YYF.
+ * date 2023/3/8 23:31.
+ 
+end note
+
+
+
+FuGemen <|.. FuDecorator
+FuDecorator <|-- TeslaFuDecorator
+FuDecorator <|-- RockFuDecorator
+FuGemen <|.. Mask
+@enduml
