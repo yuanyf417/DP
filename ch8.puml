@@ -1,0 +1,127 @@
+@startuml
+class PowOperation {
++ double gerResult(double,double)
+}
+note top of PowOperation
+
+ * 指数算法
+ 
+end note
+
+class SubOperation {
++ double gerResult(double,double)
+}
+note top of SubOperation
+
+ * 减法算法
+ 
+end note
+
+class OperationBasicFactory {
++ Operation createOperation(String)
+}
+note top of OperationBasicFactory
+
+ * 基础算法工厂
+ 
+end note
+
+class MulOperation {
++ double gerResult(double,double)
+}
+note top of MulOperation
+
+ * 乘法算法
+ 
+end note
+
+class DivOperation {
++ double gerResult(double,double)
+}
+note top of DivOperation
+
+ * 除法算法
+ 
+end note
+
+interface Operation {
+~ double gerResult(double,double)
+}
+note top of Operation
+
+ * 运算方法接口
+ 
+end note
+note left of Operation::gerResult(double,double)
+     * 运算
+end note
+
+interface IFactory {
+~ Operation createOperation(String)
+}
+note top of IFactory
+
+ * 顶级工程
+
+end note
+class AddOperation {
++ double gerResult(double,double)
+}
+note top of AddOperation
+
+ * 加法算法
+ 
+end note
+
+class LogOperation {
++ double gerResult(double,double)
+}
+note top of LogOperation
+
+ * 对数算法
+ 
+end note
+
+class OperationAdvancedFactory {
++ Operation createOperation(String)
+}
+note left of OperationAdvancedFactory
+
+ * 高级算法工厂
+ 
+end note
+
+
+class OperationFactory {
++ Operation createOperation(String)
+}
+note right of OperationFactory
+
+ * 整合工厂
+
+end note
+
+
+Operation <|.. MulOperation : 实现
+Operation <|.. DivOperation : 实现
+Operation <|.. AddOperation : 实现
+Operation <|.. SubOperation : 实现
+
+
+AddOperation <... OperationBasicFactory : 依赖
+SubOperation <... OperationBasicFactory : 依赖
+MulOperation <... OperationBasicFactory : 依赖
+DivOperation <... OperationBasicFactory : 依赖
+
+Operation <|.. LogOperation : 实现
+Operation <|.. PowOperation : 实现
+
+
+PowOperation <... OperationAdvancedFactory : 依赖
+LogOperation <... OperationAdvancedFactory : 依赖
+
+IFactory <|.. OperationBasicFactory : 实现
+IFactory <|.. OperationAdvancedFactory : 实现
+OperationAdvancedFactory <.. OperationFactory : 依赖
+OperationBasicFactory <.. OperationFactory : 依赖
+@enduml
