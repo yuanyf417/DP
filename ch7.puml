@@ -1,0 +1,33 @@
+@startuml
+class RealSubject {
++ void request()
+}
+note top of RealSubject
+
+ * 真实对象
+ *
+ 
+end note
+
+class Proxy {
+- RealSubject realSubject
++ <<Create>> Proxy()
++ void request()
+}
+class App {
++ {static} void main(String[])
+}
+interface ISubject {
+~ void request()
+}
+note top of ISubject
+
+ * 代理和真实对象的共同接口
+ 
+end note
+
+
+
+ISubject <|.. RealSubject
+ISubject <|.. Proxy
+@enduml
