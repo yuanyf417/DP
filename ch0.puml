@@ -134,7 +134,7 @@ Bird <|-- WideGoose :继承
 Bird <|--- Duck :继承
 Bird "1"*---"2" Wing :合成（组合）
 Duck <|-- DonaldDuck :继承
-DonaldDuck <|. ILanguage : 实现
+ILanguage <|. DonaldDuck : 实现
 WideGooseAggregate o-- WideGoose : 聚合
 Water <... Animal : 依赖
 Oxygen <... Animal : 依赖
