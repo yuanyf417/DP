@@ -1,0 +1,103 @@
+@startuml
+class EveningState {
++ void writeProgram(Work)
+}
+note top of EveningState
+
+ * 晚上
+ 
+end note
+
+class AfternoonState {
++ void writeProgram(Work)
+}
+note top of AfternoonState
+
+ * 下午
+ 
+end note
+
+class SleepingState {
++ void writeProgram(Work)
+}
+note top of SleepingState
+
+ * 寄了
+ 
+end note
+
+class Work {
+- State currentState
+- int hour
+- boolean workFinish
++ <<Create>> Work()
++ void writeProgram()
+}
+note top of Work
+
+ * 工作类
+ 
+end note
+note left of Work::currentState
+
+     * 当前状态
+     
+end note
+note right of Work::hour
+
+     * 当前时间
+     
+end note
+note left of Work::workFinish
+
+     * 工作是否完成
+     
+end note
+
+class RestState {
++ void writeProgram(Work)
+}
+note top of RestState
+
+ * 下班
+ 
+end note
+
+abstract class State {
++ {abstract}void writeProgram(Work)
+}
+note top of State
+
+ * 状态抽象类
+ 
+end note
+
+class ForenoonState {
++ void writeProgram(Work)
+}
+note top of ForenoonState
+
+ * 上午
+ 
+end note
+
+class NoonState {
++ void writeProgram(Work)
+}
+note top of NoonState
+
+ * 中午
+ 
+end note
+
+
+
+State <|-- EveningState : 继承
+State <|-- AfternoonState : 继承
+State <|-- SleepingState : 继承
+State <|-- RestState : 继承
+State <|-- ForenoonState : 继承
+State <|-- NoonState : 继承
+
+Work o..> State : 聚合
+@enduml
