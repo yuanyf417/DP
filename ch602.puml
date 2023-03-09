@@ -1,13 +1,4 @@
 @startuml
-class App {
-+ {static} void main(String[])
-}
-note top of App
-
- * @author YYF.
- * date 2023/3/9 00:42.
- 
-end note
 
 class CashNormal {
 + double acceptCash(double,int)

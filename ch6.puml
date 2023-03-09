@@ -71,20 +71,9 @@ note left of ConcreteDecoratorB::addedBehavior()
      
 end note
 
-class App {
-+ {static} void main(String[])
-}
-note top of App
-
- * @author YYF.
- * date 2023/3/8 23:13.
- 
-end note
-
-
-
 Component <|-- ConcreteComponent
 Decorator <|-- ConcreteDecoratorA
-Component <|-- Decorator
-Decorator <|-- ConcreteDecoratorB
+Component <|--- Decorator
+Decorator o--- Component
+Decorator <|--- ConcreteDecoratorB
 @enduml

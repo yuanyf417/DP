@@ -15,16 +15,6 @@ note left of FuGemen::showPower()
      
 end note
 
-class App {
-+ {static} void main(String[])
-}
-note top of App
-
- * @author YYF.
- * date 2023/3/8 23:40.
- 
-end note
-
 class FuDecorator {
 # FuGemen fuGemen
 + void showPower()
@@ -57,14 +47,14 @@ note top of RockFuDecorator
  
 end note
 
-class Mask {
+class Gemen {
 - String name
-+ <<Create>> Mask(String)
++ <<Create>> Gemen(String)
 + void showPower()
 }
-note top of Mask
+note top of Gemen
 
- * 马斯克
+ * 哥们
  * @author YYF.
  * date 2023/3/8 23:31.
  
@@ -72,8 +62,8 @@ end note
 
 
 
-FuGemen <|.. FuDecorator
+FuGemen <|... FuDecorator
 FuDecorator <|-- TeslaFuDecorator
 FuDecorator <|-- RockFuDecorator
-FuGemen <|.. Mask
+FuGemen <|.. Gemen
 @enduml
