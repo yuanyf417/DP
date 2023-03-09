@@ -128,16 +128,16 @@ note top of Oxygen
  * 氧气
 end note
 
-Animal <|---- Bird :继承
+Animal <|-- Bird :继承
 Bird <|-- Penguin :继承
 Bird <|-- WideGoose :继承
 Bird <|--- Duck :继承
 Bird "1"*---"2" Wing :合成（组合）
 Duck <|-- DonaldDuck :继承
 ILanguage <|. DonaldDuck : 实现
-WideGooseAggregate o-- WideGoose : 聚合
-Water <... Animal : 依赖
-Oxygen <... Animal : 依赖
-IFly <|.. WideGoose : 实现
+WideGooseAggregate o---- WideGoose : 聚合
+Water <.. Animal : 依赖
+Oxygen <.. Animal : 依赖
+IFly <|-. WideGoose : 实现
 Climate <-- Penguin :关联
 @enduml

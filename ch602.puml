@@ -5,8 +5,7 @@ class CashNormal {
 }
 note top of CashNormal
 
- * @author YYF.
- * date 2023/3/9 00:26.
+ *最基本包装[原价]
  
 end note
 
@@ -15,9 +14,7 @@ interface ISale {
 }
 note top of ISale
 
- * 销售接口
- * @author YYF.
- * date 2023/3/9 00:25.
+ * 包装行为的抽象[销售模式]
  
 end note
 
@@ -27,10 +24,7 @@ class CashSuper {
 + double acceptCash(double,int)
 }
 note top of CashSuper
-
- * @author YYF.
- * date 2023/3/9 00:28.
- 
+ * 包装顶级接口
 end note
 
 class CashContext {
@@ -39,12 +33,14 @@ class CashContext {
 + double getResult(double,int)
 }
 note top of CashContext
-
- * @author YYF.
- * date 2023/3/9 00:42.
- 
+ * 包装类的策略
 end note
-
+note right of CashContext::CashContext
+ * 策略的选择
+end note
+note right of CashContext::getResult
+ * 包装后的结果
+end note
 class CashReturn {
 - double moneyCondition
 - double moneyReturn
@@ -53,8 +49,7 @@ class CashReturn {
 }
 note top of CashReturn
 
- * @author YYF.
- * date 2023/3/9 00:29.
+ * 自定义包装[满减]
  
 end note
 note left of CashReturn::moneyCondition
@@ -75,16 +70,19 @@ class CashRebate {
 }
 note top of CashRebate
 
- * @author YYF.
- * date 2023/3/9 00:39.
+ * 自定义包装[打折]
  
+end note
+note right of CashRebate::moneyRebae
+
+     * 折扣
+
 end note
 
 
-
-ISale <|.. CashNormal
-ISale <|.. CashSuper
-CashSuper <|-- CashReturn
-CashSuper <|-- CashRebate
-CashContext o-- CashSuper
+ISale <|.. CashNormal : 实现
+ISale <|.. CashSuper : 实现
+CashSuper <|-- CashReturn : 继承
+CashSuper <|-- CashRebate : 继承
+CashContext o-- CashSuper : 聚合
 @enduml
