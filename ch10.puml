@@ -1,0 +1,23 @@
+@startuml
+abstract class AbstractTest {
++ void test1()
++ void test2()
++ {abstract}String answer1()
++ {abstract}String answer2()
+}
+class Xiaom {
++ String answer1()
++ String answer2()
+}
+class App {
++ {static} void main(String[])
+}
+class Xiaoh {
++ String answer1()
++ String answer2()
+}
+
+
+AbstractTest <|-- Xiaom
+AbstractTest <|-- Xiaoh
+@enduml
