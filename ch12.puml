@@ -1,0 +1,33 @@
+@startuml
+class Facade {
+- SubSystemOne subSystemOne
+- SubSystemTwo subSystemTwo
+- SubSystemThree subSystemThree
++ <<Create>> Facade(SubSystemOne,SubSystemTwo,SubSystemThree)
++ void all()
++ void g1()
+}
+class SubSystemOne {
++ void m1()
+}
+class SubSystemTwo {
++ void m2()
+}
+class SubSystemThree {
++ void m3()
+}
+class App {
++ {static} void main(String[])
+}
+note top of App
+
+ * 外观模式
+ 
+end note
+
+SubSystemOne o-- Facade : 聚合
+SubSystemTwo o-- Facade : 聚合
+SubSystemThree o-- Facade : 聚合
+
+
+@enduml
