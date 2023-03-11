@@ -1,17 +1,13 @@
-package com.yyf.app.ch602;
+package com.yyf.app.ch801;
 
 /**
- * @author YYF.
- * date 2023/3/9 00:42.
+ * 工厂模式
  */
 public class App {
 
     public static void main(String[] args) {
-
-        // 策略模式 就是打包方式
         CashContext cashContext = new CashContext(5);
-
-        double result = cashContext.getResult(1000, 1);
+        double result = cashContext.getResult(1000D, 2);
         System.out.println(result);
     }
 }

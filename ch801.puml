@@ -1,0 +1,50 @@
+@startuml
+class App {
++ {static} void main(String[])
+}
+class CashRebateReturnFactory {
+- double moneyRebate
+- double moneyCondition
+- double moneyReturn
++ <<Create>> CashRebateReturnFactory(double,double,double)
++ ISale createSaleModel()
+}
+note top of CashRebateReturnFactory
+
+ * 先打折 在满减
+ 
+end note
+
+class CashReturnRebateFactory {
+- double moneyRebate
+- double moneyCondition
+- double moneyReturn
++ <<Create>> CashReturnRebateFactory(double,double,double)
++ ISale createSaleModel()
+}
+note top of CashReturnRebateFactory
+
+ * 先满减 在打折
+ 
+end note
+
+class CashContext {
+- ISale sale
++ <<Create>> CashContext(int)
++ double getResult(double,int)
+}
+note top of CashContext
+
+ * 改造
+ * @see com.yyf.app.ch602.CashContext
+ 
+end note
+
+interface IFactory {
+~ ISale createSaleModel()
+}
+
+
+IFactory <|.. CashRebateReturnFactory
+IFactory <|.. CashReturnRebateFactory
+@enduml
