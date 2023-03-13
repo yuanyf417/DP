@@ -1,0 +1,27 @@
+@startuml
+class StockObserver {
+- String name
++ <<Create>> StockObserver(String)
++ void update(Observable,Object)
+}
+class NBAObserver {
+- String name
++ <<Create>> NBAObserver(String)
++ void update(Observable,Object)
+}
+class Boss {
+- String name
+- String action
++ <<Create>> Boss(String)
++ String getName()
++ String getAction()
++ void setAction(String)
+}
+
+
+Observer <|.. StockObserver
+Observer <|.. NBAObserver
+Observable <|-- Boss
+Observer <-- Observable
+
+@enduml
