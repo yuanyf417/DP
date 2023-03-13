@@ -1,0 +1,57 @@
+@startuml
+class Product {
+~ ArrayList<String> parts
++ void add(String)
++ void show()
+}
+abstract class Builder {
++ {abstract}void buildPartA()
++ {abstract}void buildPartB()
++ {abstract}Product getResult()
+}
+note top of Builder
+
+ * 抽象的建造者
+ * 具有哪些建造方法及返回建造成果
+ 
+end note
+
+class Director {
++ void construct(Builder)
+}
+note top of Director
+
+ * 指挥者
+ * 负责组装调用建造者的方法
+ 
+end note
+note right of Director::construct(Builder)
+
+     * 建造步骤/顺序
+     * @param builder
+     
+end note
+
+class App {
++ {static} void main(String[])
+}
+class ConcreteBuilder2 {
+~ Product product
++ void buildPartA()
++ void buildPartB()
++ Product getResult()
+}
+class ConcreteBuilder1 {
+~ Product product
++ void buildPartA()
++ void buildPartB()
++ Product getResult()
+}
+
+Director o---> Builder
+Builder <|-- ConcreteBuilder2
+Builder <|-- ConcreteBuilder1
+
+Product <.. ConcreteBuilder1
+Product <.. ConcreteBuilder2
+@enduml
