@@ -1,0 +1,42 @@
+@startuml
+class GameRole {
+- String name
+- int life
++ RoleStateMemento saveLife()
++ void recoveryLife(RoleStateMemento)
++ void fight()
++ String getName()
++ void setName(String)
++ int getLife()
++ void setLife(int)
+}
+note top of GameRole
+
+ * 角色[备忘主体]
+
+end note
+class RoleStateMemento {
+- int life
++ <<Create>> RoleStateMemento(int)
++ int getLife()
++ void setLife(int)
+}
+note top of RoleStateMemento
+
+ * 角色存储状态[备忘具体属性]
+ 
+end note
+
+class RoleStateCaretaker {
+- RoleStateMemento roleStateMemento
++ RoleStateMemento getRoleStateMemento()
++ void setRoleStateMemento(RoleStateMemento)
+}
+note top of RoleStateCaretaker
+
+ * 角色存储[备忘存储池]
+
+end note
+RoleStateMemento <-- GameRole
+RoleStateMemento <-- RoleStateCaretaker
+@enduml
