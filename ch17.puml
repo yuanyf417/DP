@@ -1,0 +1,43 @@
+@startuml
+class Guards {
++ <<Create>> Guards(String)
++ void attack()
++ void defense()
+}
+class ForeginCenter {
+- String name
++ <<Create>> ForeginCenter(String)
++ void 进攻()
++ void 防守()
+}
+abstract class Player {
+# String name
++ <<Create>> Player(String)
++ {abstract}void attack()
++ {abstract}void defense()
+}
+class Translator {
+- ForeginCenter foreginCenter
++ <<Create>> Translator(String)
++ void attack()
++ void defense()
+}
+class Forwards {
++ <<Create>> Forwards(String)
++ void attack()
++ void defense()
+}
+class Center {
++ <<Create>> Center(String)
++ void attack()
++ void defense()
+}
+
+
+Player <|-- Guards
+Player <|-- Translator
+Player <|-- Forwards
+Player <|-- Center
+
+ForeginCenter <-- Translator
+@enduml
